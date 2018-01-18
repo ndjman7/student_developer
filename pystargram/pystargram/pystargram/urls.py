@@ -23,4 +23,4 @@ urlpatterns = [
     path('photos/', include('photos.urls')),
 ]
 
-urlpatterns += static('upload_files', document_root=settings.MEDIA_ROOT)
+urlpatterns += static('/upload_files/', document_root=settings.MEDIA_ROOT)
