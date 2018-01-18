@@ -38,6 +38,7 @@ urlpatterns = [
             'next_page': settings.LOGIN_URL,
         }
     ),
+    path('users/', include('profiles.urls')),
 ]
 
 urlpatterns += static('/upload_files/', document_root=settings.MEDIA_ROOT)
