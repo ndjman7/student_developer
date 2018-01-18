@@ -17,10 +17,27 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('photos/', include('photos.urls')),
+    path(
+        'accounts/login/',
+        auth_views.login,
+        name='login',
+        kwargs={
+            'template_name': 'login.html'
+        },
+    ),
+    path(
+        'accounts/logout/',
+        auth_views.logout,
+        name='logout',
+        kwargs={
+            'next_page': settings.LOGIN_URL,
+        }
+    ),
 ]
 
 urlpatterns += static('/upload_files/', document_root=settings.MEDIA_ROOT)
