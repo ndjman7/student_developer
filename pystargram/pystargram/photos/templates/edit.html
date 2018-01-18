@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<form
+    method="POST"
+    action=""
+    enctype="multipart/form-data"
+>
+    {% csrf_token %}
+    {% for field in form %}
+    <p>
+        {% if field.errors %}
+        <ul>
+            {% for error in field.errors %}
+            <li>{{ errors }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {{ field }}
+    </p>
+    {% endfor %}
+
+    <p>
+        <button type="submit">저장</button>
+    </p>
+</form>
+
+{% endblock %}
